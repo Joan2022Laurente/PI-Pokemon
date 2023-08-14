@@ -1,0 +1,28 @@
+.detailPage{
+  background-color: rgb(18, 18, 18);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.detailPage .container{
+  display : flex;
+  width: 90%;
+  flex-wrap: wrap;
+
+}
+
+.detailPage .container .data{
+  background-color: red;
+  width: 50%;
+  flex-wrap: wrap;
+}
+
+.detailPage .container .image{
+  background-color: rgb(255, 0, 247);
+  width: 50%;
+  flex-wrap: wrap;
+}

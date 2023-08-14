@@ -1,0 +1,148 @@
+.homePage {
+  background-color: #171717;
+  position: relative;
+  padding-bottom: 150px;
+  color: white;
+}
+.homePage .pagination {
+  width: 90%;
+  margin: auto;
+  margin-top: 60px;
+  text-align: center;
+}
+.homePage .pagination button{
+  padding: 15px 20px;
+  margin: 5px;
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.304);
+  color: white;
+}
+.homePage .pagination .active{
+  background-color: rgb(255, 255, 255);
+  color: black;
+  font-weight: bold;
+}
+.homePage .filtrosOrdenComponent {
+  width: 90%;
+  margin: auto;
+  color: rgb(255, 255, 255);
+  margin-bottom: 50px;
+  font-size: 2rem;
+}
+.homePage .filtrosOrdenComponent p {
+  display: inline-block;
+  color: rgb(0, 0, 0);
+  font-size:0.8rem;
+  font-weight: 600;
+}
+.homePage .filtrosOrdenComponent .searchBar {
+  margin-top: 50px;
+  width: 100%;
+  text-align: center;
+}
+.homePage .filtrosOrdenComponent .searchBar input{
+  padding: 10px;
+  width: 250px;
+  margin-right: 10px;
+  border-radius: 20px;
+  outline: none;
+}
+.homePage .filtrosOrdenComponent .searchBar .btn-reset{
+  border: 50%;
+  margin-right: 10px;
+  background-color: rgb(162, 0, 0);
+  color : white;
+  border: 0;
+}
+.homePage .filtrosOrdenComponent .filterr {
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
+  background-color: white;
+}
+.filtrosOrdenComponent select {
+  padding: 10px 10px;
+  outline: none;
+  border-radius: 15px;
+  margin: 5px;
+}
+.filtrosOrdenComponent button {
+  padding: 10px 10px;
+  outline: none;
+  border-radius: 30px;
+  border: 1px solid white;
+}
+.homePage .listaPokemones {
+  display: flex;
+  margin: auto;
+  width: 90%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.homePage .cabezeraHome {
+  width: 100%;
+  text-align: center;
+}
+.homePage .cabezeraHome img {
+  width: 50%;
+}
+.listaPokemones .cardPokemon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 32.5%;
+  height: 250px;
+  margin: 5px;
+  /* background-color: rgb(21, 21, 21); */
+  background-color: #111111;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+.listaPokemones .cardPokemon:hover {
+  background-color: rgb(0, 0, 0);
+}
+.left {
+  width: 40%;
+  text-align: center;
+}
+.right {
+  text-align: center;
+  width: 60%;
+}
+.right .data {
+  padding: 20px;
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  text-align: center;
+}
+.right .data p {
+  margin-bottom: 5px;
+}
+.right .data button {
+  background-color: white;
+  padding: 10px 10px;
+  color: black;
+  margin-top: 10px;
+  border-radius: 30px;
+  width: 80%;
+}
+.cardPokemon img {
+  width: 80%;
+}
+@media (max-width: 900px) {
+  .listaPokemones .cardPokemon {
+    width: 45%;
+  }
+}
+@media (max-width: 550px) {
+  .listaPokemones .cardPokemon {
+    width: 100%;
+  }
+}

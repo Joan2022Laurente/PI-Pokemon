@@ -1,0 +1,47 @@
+.landingPage {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow-y: hidden;
+}
+.landingPage .backgroundImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  filter: brightness(50%);
+}
+.landingPage .btnLandingPage {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 60%;
+  left: 50%;
+  font-size: 1.5rem;
+  font-weight: 500;
+
+  background-color: rgba(0, 0, 0, 0.496);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.landingPage .btnLandingPage:hover {
+  background-color: rgba(0, 0, 0, 0.729);
+}
+.landingPage .titulo {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 40%;
+  left: 50%;
+  font-size: 3rem;
+  font-weight: 2rem;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.landingPage .titulo span {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: white;
+}

@@ -1,0 +1,35 @@
+.navbar {
+  background-image: linear-gradient(black, transparent);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.navbar ul li {
+  list-style: none;
+  margin: 5px;
+}
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 5px;
+  font-size: 1.2rem;
+}
+/* .navbar .busqueda {
+  outline: 0;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  padding: 5px 10px;
+} */
