@@ -1,51 +1,68 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./detailPage.css"
-import axios from "axios";
+import {
+  fetchPokemonDetails,
+  deletePokemon,
+} from "../../Redux/actions/pokemonsActions";
+import { useSelector, useDispatch } from "react-redux";
+import "./detailPage.css";
 
 export const DetailPage = () => {
   const { pokemonId } = useParams();
-  const [pokemon, setPokemon] = useState(null);
+  const dispatch = useDispatch();
+  const pokemon = useSelector((state) => state.pokemons.pokemonDetail);
+  const [containsLetters, setContainsLetters] = useState(false);
+
+  const handleDelete = () => {
+    dispatch(deletePokemon(pokemonId));
+  };
 
   useEffect(() => {
-    const fetchPokemonDetails = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:3001/pokemons/forId/${pokemonId}`
-        );
-        setPokemon(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchPokemonDetails();
+    const hasLetters = /[a-zA-Z]/.test(pokemonId);
+    setContainsLetters(hasLetters);
+    try {
+      dispatch(fetchPokemonDetails(pokemonId));
+    } catch (error) {
+      console.log(error);
+    }
   }, [pokemonId]);
 
-  if (!pokemon) {
+  if (!pokemon || pokemon.types === undefined) {
     return <div>Loading...</div>;
-  }
-
-  return (
-    <div className="detailPage">
-      <div className="container">
-        <div className="data">
-          <p>Name: {pokemon.name}</p>
-          <p>Attack: {pokemon.attack}</p>
-          <p>Defense: {pokemon.defense}</p>
-          <p>
-            Types:
-            {pokemon.types.map((t) => (
-              <p>{t.name}</p>
-            ))}
-          </p>
-          <p>Attack: {pokemon.attack}</p>
-          <p>Defense: {pokemon.defense}</p>
+  } else {
+    return (
+      <div className="detailPage">
+        <div className="container">
+          <div className="data">
+            <div className="box">
+              <p className="nombre">Nombre: {pokemon.name}</p>
+              <p>ID: {pokemon.id}</p>
+              <p>Types: {pokemon.types.join(", ")}</p>
+              <p>Height: {pokemon.height}</p>
+              <p>Weight: {pokemon.weight}</p>
+              <p>HP: {pokemon.hp}</p>
+              <p>Attack: {pokemon.attack}</p>
+              <p>Defense: {pokemon.defense}</p>
+              <p>Speed: {pokemon.speed}</p>
+            </div>
+          </div>
+          <div className="image">
+            <img src={pokemon.image} alt={pokemon.name} />
+          </div>
         </div>
-        <div className="image">
-          <img src={pokemon.image} alt={pokemon.name} />
+        <div className="info">
+          {containsLetters ? (
+            <>
+              <p>Origen: Base de datos local</p>
+              <button onClick={handleDelete}>Borrar Pokémon</button>
+            </>
+          ) : (
+            <>
+              <p>Origen: API </p>
+            </>
+          )}
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };

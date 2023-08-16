@@ -7,6 +7,7 @@ const initialState = {
     orderByAtack: null,
     orderByAlphabet: null,
   },
+  pokemonDetail: {},
 };
 
 export const pokemonReducer = (state = initialState, action) => {
@@ -80,6 +81,11 @@ export const pokemonReducer = (state = initialState, action) => {
         pokemons: [action.payload],
       };
 
+    case "GET_DETAIL":
+      return {
+        ...state,
+        pokemonDetail: action.payload,
+      };
     default:
       return state;
   }

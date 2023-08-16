@@ -135,9 +135,26 @@ const getPokeId = async (req, res) => {
         },
         include: [Type],
       });
+
       if (!pokemon) {
         throw new Error("Pokémon no encontrado");
       }
+      // Extraer los nombres de los tipos
+      const typeNames = pokemon.types.map((type) => type.name);
+
+      // Crear un nuevo objeto pokemon con los nombres de los tipos
+      pokemon = {
+        id: pokemon.id,
+        name: pokemon.name,
+        types: typeNames,
+        height: pokemon.height,
+        weight: pokemon.weight,
+        image: pokemon.image,
+        hp: pokemon.life,
+        attack: pokemon.attack,
+        defense: pokemon.defense,
+        speed: pokemon.speed,
+      };
     } else {
       // Obtener datos del pokemón desde la API según el id numérico
       const response = await axios.get(
@@ -157,12 +174,12 @@ const getPokeId = async (req, res) => {
         speed: pokeData.stats[5].base_stat,
       };
     }
+
     res.json(pokemon);
   } catch (error) {
     res.status(404).send({ error: error.message });
   }
 };
-
 const createPokemon = async (req, res) => {
   try {
     const { name, types, height, weight, image, hp, attack, defense, speed } =

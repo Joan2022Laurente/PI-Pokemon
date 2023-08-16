@@ -15,6 +15,7 @@ export const getPokemons = () => {
 };
 
 export const applyPokemonFilters = (filters) => {
+  console.log("ksadnf")
   return {
     type: "APPLY_POKEMON_FILTERS",
     payload: filters,
@@ -56,7 +57,8 @@ export const createPokemon = (pokemon) => {
 
       alert("pokemon creado correctamente");
     } catch (error) {
-      return error;
+      console.error(error);
+      throw new Error("Error al crear el Pokémon");
     }
   };
 };
@@ -64,9 +66,26 @@ export const createPokemon = (pokemon) => {
 export const deletePokemon = (id) => {
   return async (dispatch) => {
     try {
-      const res = await axios.delete(`http://localhost:3001/pokemons/${id}`);
+      const res = await axios.delete(`http://localhost:3001/pokemons/delete/${id}`);
+      alert("Pokemon eliminado de la base de datos correctamente");
     } catch (error) {
       console.log("Ocurrio un error");
+    }
+  };
+};
+
+export const fetchPokemonDetails = (pokemonId) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3001/pokemons/forId/${pokemonId}`
+      );
+      dispatch({
+        type: "GET_DETAIL",
+        payload: response.data,
+      });
+    } catch (error) {
+      console.error(error);
     }
   };
 };
